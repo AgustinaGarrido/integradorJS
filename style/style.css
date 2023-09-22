@@ -2,12 +2,12 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
+    font-family: 'Inclusive Sans', sans-serif;
     text-decoration: none;
     list-style-type: none;
 }
 body{
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+   /*  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; */
     background-color: #6B9080;
 }
 .logo{
@@ -54,10 +54,13 @@ li a {
     color: black;
     text-decoration: none;
 }
+.hover{
+    padding: 10px;
+}
 .hover:hover{
     background: #F6FFF8;
     border-radius: 1rem;
-    padding: 10px;
+    
 }
 /* modal carrito */
 
@@ -233,12 +236,15 @@ h1{
 /*descripcion de la empresa*/
 
 .About-us{
-padding: 40px;
-margin-top: 30px;
-font-size: 20px;
-background-color: #EAF4F4;
-text-align: center;
-margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 40px;
+    margin-top: 30px;
+    font-size: 20px;
+    background-color: #EAF4F4;
+    text-align: center;
+    margin-bottom: 30px;
 }
 .titulo-productos{
     padding: 20px;
@@ -321,9 +327,16 @@ footer span{
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 15px;
+    gap: 10px;
+    cursor:pointer;
+    
     
 }
+#categorias img{
+    max-width: 100%;
+    height: auto;
+}
+
 
 /*carts products*/
 #card-container{
@@ -449,15 +462,19 @@ footer span{
   }
   
   .modal-content {
-    background-color: #05fa4e;
+    background-color: #9fdab0;
     padding: 100px;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    border-radius: 1rem;
   }
-  
+  .menu-logo{
+    width: 70px;
+    margin-left: 280px;
+  }
   /* Estilos para el botón de abrir el modal (visible solo en pantallas pequeñas) */
   .modal-button {
     display: none;
