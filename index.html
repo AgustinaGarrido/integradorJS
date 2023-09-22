@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="./style/style.css">
+    <link rel="icon" href="./img/imgstanley/Homepage - AvantLink _ Affiliate Marketing.png" type="logo">
+
+    <title>Stanley</title>
+</head>
+<body>
+      <!-- Navbar -->
+    <header class="header">
+         
+
+        <!-- <label for="toggle-menu" class="menu-label"><i class="fa-solid fa-bars"></i></label>
+            <input type="checkbox" id="toggle-menu"> -->
+        <nav class="navbar">
+            
+            <img class="logo" src="./img/imgstanley/Homepage - AvantLink _ Affiliate Marketing.png" alt="logo">
+            
+            <button id="openModalButton" class="modal-button" aria-label="Abrir menú">
+                <img style="width: 70px;" src="./img/imgstanley/menu.png" alt="Menú">
+            </button>
+        
+            <ul class="listas">
+                <li class="hover"> <a href="#inicio">Inicio</a> </li>
+                <li class="hover"><a href="#About-us">¿Quienes somos?</a> </li>
+                <li class="hover"> <a href="#contact">Contacto</a> </li> 
+            </ul>
+        
+            <label for="cart-toggle" class="cart-label">
+            <img class="carrito-img carrito-contenedor" id="carrito-icon" src="./img/carretilla (1).png" alt="Carro">
+            </label>
+           
+            
+        
+            <!-- Modal con las opciones del navbar -->
+            <div id="navbarModal" class="modal">
+                <div class="modal-content">
+                <ul class="listasModal">
+                    <li class="hover"> <a href="#inicio">Inicio</a> </li>
+                    <li class="hover"><a href="#About-us">¿Quiénes somos?</a> </li>
+                    <li class="hover"> <a href="#contact">Contacto</a> </li>
+                </ul>
+                <!-- Botón para cerrar el modal -->
+                <button id="closeModalButton" class="modal-button" aria-label="Cerrar menú">❌</button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+ <!-- portada -->
+    <main id="inicio">
+         <!-- Portada -->
+         <div class="slider-box">
+            <ul class="slider-box-ul">
+                <li class="slider-box-ul-li">
+                    <img class="slider-box-ul-li-img" src="./img/imgstanley/carrusel1.png" alt="imagen1">
+                </li>
+
+                <li class="slider-box-ul-li">
+                    <img class="slider-box-ul-li-img" src="./img/imgstanley/carrrusel2.png" alt="imagen2">
+                </li>
+        
+                <li class="slider-box-ul-li">
+                    <img class="slider-box-ul-li-img" src="./img/imgstanley/carrusel3.png" alt="imagen3">
+                </li>
+                
+            </ul>
+        </div>
+        
+            
+        </div>
+         <!-- about us -->
+        <section id="About-us">
+            <div class="About-us" >
+                <h2>¿Quienes somos?</h2>
+            <p>La marca Stanley fue creada por William Stanley Jr. Nuestra mision como empresa es aumentar el tiempo que pases al aire libre, ofreciendo un equipo con el que puedas contar desde el amanecer hasta el artadecer, desde el cafe para empezar el dia hasta que culmine la noche.</p>
+        </div>
+        </section>
+    </main>
+    <section id="description">
+        
+        
+        
+        <div class="container" id="categorias">
+            <img id="categoria-termos" src="./img/imgstanley/img categoria 1.png" alt="Termos">
+            <img id="categoria-vasos" src="./img/imgstanley/img categoria 2.png" alt="Vasos">
+            <img id="categoria-mates" src="./img/imgstanley/img categoria 3.png" alt="Mates">
+            <img id="categoria-todos" src="./img/imgstanley/todosLosProd.png" alt="Productos" srcset="">
+        </div>
+        
+        <div id="card-container"></div>  
+        </section>
+
+    </section>
+     <!-- contacto -->
+    <section id="contact">
+        <div class="contenedor__contact">
+
+            <div class="contact" >
+                <h2 class="animate__animated animate__backInLeft">
+                    Contactanos 📩
+                </h2>
+
+                <!-- formulario -->
+                <form class="formulario" id="contacto-form" novalidate>
+                    <div class="form-group">
+                      <label for="nombre">Apellido y Nombre:</label>
+                      <input type="text" id="nombre" name="nombre" required>
+                      <small></small>
+                    </div>
+                    
+                    <div class="form-group">
+                      <label for="correo">Correo:</label>
+                      <input type="email" id="correo" name="correo" required>
+                      <small></small>
+                    </div>
+                    <div class="form-group">
+                      <label for="mensaje">Mensaje:</label>
+                      <textarea id="mensaje" name="mensaje" rows="4" cols="50" required></textarea>
+                    </div>
+                    <div class="form-group">
+                      <input class="hover" type="submit" value="Enviar">
+                    </div>
+                    <!-- esto se va hacer desde mi js -->
+                    <h2 id="mensaje-envio">
+
+                    </h2>
+                  </form>
+
+            </div>
+            <div class="map">
+                <img src="https://i.pinimg.com/564x/c3/b0/c2/c3b0c2bf64a983c3be9b3e84b9ab52d7.jpg" alt="" srcset="">
+            </div>
+
+        </div>       
+    </section>
+    <section>
+        <div id="modal">
+            <div id="modal-content">
+                <h2>Carrito de Compras</h2>
+                <ul id="carrito-list"></ul>
+                <button id="cerrar-modal">Cerrar</button>
+            </div>
+        </div>
+        
+    </section>
+     <!-- footer -->
+    <footer>
+        <div>
+            <ul class="footer-links">
+                <li class="hover"><a href="#contact">Contacto</a></li>
+                <li class="hover"><a href="#inicio">Inicio</a></li>
+            </ul>
+        </div>
+        <p>Un <span>STANLEY</span> para cada momento.</p>
+        <div class="mi-info">
+        <p class="animate__animated animate__backInLeft">🗺San Salvador de Jujuy</p>
+        <p class="animate__animated animate__backInLeft">📧garridod961@gmail.com</p>
+        <p class="animate__animated animate__backInLeft">📲+54 3886 546572</p>
+        </div>
+
+    </footer>
+    <script src="carrito.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+</body>
+</html>
