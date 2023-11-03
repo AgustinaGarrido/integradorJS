@@ -52,13 +52,6 @@ body{
     display: none;
 }
 
-
-
-
-li a {
-    color: black;
-    text-decoration: none;
-}
 .hover{
     padding: 10px;
 }
@@ -516,6 +509,17 @@ footer span{
     input[type="submit"] {
       padding: 8px;
     }
+    .modal {
+      display: none;
+      position: fixed;
+      /* top: 0;
+      left: 0; */
+      max-width: 50%;
+      
+      background-color: rgba(0, 0, 0, 0.5);
+      
+    }
+
 
     .card {
       background-color: #309c9c;
@@ -613,8 +617,25 @@ footer span{
     cursor: pointer;
     background-color: #A4C3B2;
   }
-  
-  /* Estilos para el botón de cerrar el modal */
+
+/* Estilo para enlaces */
+ul.listasModal li a {
+  display: inline-block;
+  padding: 10px 20px; 
+  text-decoration: none;
+  background-color:#025c2f;
+  color: #FFF; 
+  border-radius: 5px; 
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); 
+  transition: all 0.3s; 
+}
+
+/* Estilo hover */
+ul.listasModal li a:hover {
+  background-color:#4ab491; 
+  box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.3); 
+}
+  /*  botón de cerrar el modal */
   #closeModalButton {
     position: absolute;
     top: 10px;
@@ -624,6 +645,10 @@ footer span{
     cursor: pointer;
     font-size: 24px;
     line-height: 1;
+  }
+  
+  li a {
+    color: black;
   }
   
   
