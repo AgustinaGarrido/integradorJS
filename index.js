@@ -12,6 +12,17 @@ const botonMates = document.getElementById("categoria-mates")
 const botonTodosLosProd = document.getElementById("categoria-todos")
 
 const carritoList = document.getElementById("carrito-list");
+const vaciarCarritoButton = document.getElementById("vaciar-carrito-button");
+const confirmacionVaciar = document.getElementById("confirmacion-vaciar");
+const botonSiVaciar = document.getElementById("boton-si");
+const botonNoVaciar = document.getElementById("boton-no");
+
+const comprarCarritoButton = document.getElementById("comprar-carrito-button");
+const confirmacionComprar = document.getElementById("confirmacion-comprar");
+const botonSiComprar = document.getElementById("boton-si-comprar");
+const botonNoComprar = document.getElementById("boton-no-comprar");
+const mensajeComprado = document.getElementById("mensajeCompra")
+
 const formulario = document.getElementById("contacto-form");
 const mensajeEnvio = document.getElementById("mensaje-envio");
 
@@ -44,7 +55,7 @@ const products= [
     id:3,
     categoria:"mates",
     img:"./img/imgstanley/mateAzul.jpeg",
-    descripcion:"Mate Azul de acero inoxidable, mantiene la bebida con la temperatura ideal, capacidad de 236 ml."
+    descripcion:"Mate azul de acero inoxidable, mantiene la bebida con la temperatura ideal"
     },
     {title:"Mate Rojo",
     price:"precio: $200",
@@ -97,6 +108,8 @@ const arrayMates = products.filter((producto) => producto.categoria ==="mates");
 
 // Array para almacenar los productos en el carrito
 const carrito = [];
+
+
 //cards
 
 function renderizarProductos(productosArray){
@@ -203,86 +216,156 @@ function guardarCarritoEnLocalStorage() {
 // Función para actualizar la lista de productos en el carrito
 function actualizarCarrito() {
     carritoList.innerHTML = "";
+    let cantidadTotal = 0;
     carrito.forEach((producto) => {
-        const li = document.createElement("li");
-        li.textContent = `${producto.nombre} - ${producto.precio}`;
-        li.classList.add("texto-carrito")
-        carritoList.appendChild(li);
+      const li = document.createElement("li");
+      li.textContent = `${producto.nombre} - ${producto.precio}`;
+      li.classList.add("texto-carrito")
+      carritoList.appendChild(li);
 
         const fotito = document.createElement("img");
         fotito.classList.add("modal-fotito");
         fotito.src = producto.img;
         carritoList.appendChild(fotito);
 
-        const botonQuitar = document.createElement("button")
-        botonQuitar.textContent = "quitar producto"
-        botonQuitar.classList.add("botonQuitar")
-        carritoList.appendChild(botonQuitar)
-        botonQuitar.addEventListener("click", function(){
-            quitarProducto(producto)
-        })
-
         const cardCantidad = document.createElement("p")
         cardCantidad.classList.add("card-price")
         cardCantidad.innerText = `cantidad: ${producto.cantidad}`
         carritoList.appendChild(cardCantidad);
+        
+        const containerBotones = document.getElementById("botonesAumentarDecrementar")
 
         const botonAumentar = document.createElement("button")
-        botonAumentar.textContent = "➕"
+        botonAumentar.textContent = "Aumentar"
         botonAumentar.classList.add("boton-Aumentar")
         carritoList.appendChild(botonAumentar)
         botonAumentar.addEventListener("click",function(){
             producto.cantidad++
             cardCantidad.innerText = `cantidad: ${producto.cantidad}`
+            actualizarCarrito();
         })
 
 
         const botonDecrementar = document.createElement("button")
-        botonDecrementar.textContent = "➖"
+        botonDecrementar.textContent = "Decrementar"
         botonDecrementar.classList.add("boton-Decrementar")
         carritoList.appendChild(botonDecrementar)
-        botonDecrementar.addEventListener("click",function(){
-            if (producto.cantidad != 1) {
-                producto.cantidad--
-                cardCantidad.innerText = `cantidad: ${producto.cantidad}`
-            }else{
-                quitarProducto(producto)
+        botonDecrementar.addEventListener("click", function () {
+            if (producto.cantidad > 1) {
+              producto.cantidad--;
+              cardCantidad.innerText = `cantidad: ${producto.cantidad}`;
+              actualizarCarrito();
+            } else if (producto.cantidad === 1) {
+              const mensajeConfirmacion = document.createElement("h3");
+              mensajeConfirmacion.textContent = "¿Estás seguro de eliminar este producto del carrito?";
+              mensajeConfirmacion.style.display = "block";
+          
+              const botonSi = document.createElement("button");
+              botonSi.textContent = "Sí";
+          
+              const botonNo = document.createElement("button");
+              botonNo.textContent = "No";
+          
+              botonSi.addEventListener("click", function () {
+                quitarProducto(producto);
+                vaciarCarritoButton.style.display = "none";
+                actualizarCarrito();
+              });
+          
+              botonNo.addEventListener("click", function () {
+                carritoList.removeChild(mensajeConfirmacion);
+                carritoList.removeChild(botonSi);
+                carritoList.removeChild(botonNo);
+              });
+          
+              carritoList.appendChild(mensajeConfirmacion);
+              carritoList.appendChild(botonSi);
+              carritoList.appendChild(botonNo);
             }
-              
-        })
+          });
+        cantidadTotal += producto.cantidad;
     });
     guardarCarritoEnLocalStorage()
-}
 
+    // Actualiza el número de productos en la etiqueta <span>
+    const carritoCantidad = document.getElementById("carrito-cantidad");
+    carritoCantidad.innerText = cantidadTotal;
+    
+    if (carrito.length > 0) {
+        vaciarCarritoButton.style.display = "block";
+        /* comprarCarritoButton.style.display = "block"; */
 
+        vaciarCarritoButton.addEventListener("click", function () {
+          confirmacionVaciar.style.display = "block";
+          botonSiVaciar.style.display = "block";
+          botonNoVaciar.style.display = "block";
+      
+          vaciarCarritoButton.style.display = "none";
+          comprarCarritoButton.style.display = "none";
+        });
+      
+        botonSiVaciar.addEventListener("click", function () {
+          carrito.length = 0;
+          actualizarCarrito();
+      
+          confirmacionVaciar.style.display = "none";
+          botonSiVaciar.style.display = "none";
+          botonNoVaciar.style.display = "none";
+      
+          vaciarCarritoButton.style.display = "none";
+         
+        });
+      
+        botonNoVaciar.addEventListener("click", function () {
+          confirmacionVaciar.style.display = "none";
+          botonSiVaciar.style.display = "none";
+          botonNoVaciar.style.display = "none";
+      
+          vaciarCarritoButton.style.display = "block";
+          comprarCarritoButton.style.display = "block";
+        });
+      }
+
+    }
+
+    
 // Evento para abrir el modal al hacer clic en el icono del carrito
 carritoIcon.addEventListener("click", abrirModal);
 
 // Evento para cerrar el modal al hacer clic en el botón cerrar
 cerrarModal.addEventListener("click", cerrarModalFunc);
 
-
-
 //validacion de formularios
-
-
+let seMostroError = false;
 formulario.addEventListener("submit", function (e) {
     e.preventDefault(); 
 
     // Validar si todos los campos están llenos
-    if (nombre !== "" && correo !== "" && mensaje !== "") {
-            
-        mensajeEnvio.textContent = "Su mensaje se ha enviado correctamente ✅";
-        mensajeEnvio.style.color = "white";
-        mensajeEnvio.style.backgroundColor = "green"
-        
-    } else {
+  const nombre = document.getElementById("nombre").value;
+  const correo = document.getElementById("correo").value;
+  const mensaje = document.getElementById("mensaje").value;
 
-        mensajeEnvio.textContent = "Por favor complete todos los campos ❌";
-        mensajeEnvio.style.color = "white";
-        mensajeEnvio.style.backgroundColor = "red"
-    }
+  if (nombre !== "" && correo !== "" && mensaje !== "") {
+    mensajeEnvio.textContent = "Su mensaje se ha enviado correctamente ✅";
+    mensajeEnvio.style.color = "white";
+    mensajeEnvio.style.backgroundColor = "green";
+    seMostroError = false; // Restablecer el indicador de error
+  } else {
+    mensajeEnvio.textContent = "Por favor complete todos los campos ❌";
+    mensajeEnvio.style.color = "white";
+    mensajeEnvio.style.backgroundColor = "red";
+    seMostroError = true; 
+  }
 });
+
+// Limpiar el mensaje de éxito cuando se cambia algún campo
+formulario.addEventListener("input", function () {
+    if (seMostroError) {
+      mensajeEnvio.textContent = "Por favor complete todos los campos ❌";
+      mensajeEnvio.style.color = "white";
+      mensajeEnvio.style.backgroundColor = "red";
+    }
+  });
 
 //menu hamburguesa
 

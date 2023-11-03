@@ -17,27 +17,21 @@
 <body>
       <!-- Navbar -->
     <header class="header">
-         
         <nav class="navbar">
-            
             <img class="logo" src="./img/imgstanley/Homepage - AvantLink _ Affiliate Marketing.png" alt="logo">
-            
             <button id="openModalButton" class="modal-button" aria-label="Abrir menú">
                 <img class="menu-logo" src="./img/imgstanley/menu.png" alt="Menú">
             </button>
-        
             <ul class="listas">
                 <li class="hover"> <a href="#inicio">Inicio</a> </li>
                 <li class="hover"><a href="#About-us">¿Quienes somos?</a> </li>
                 <li class="hover"> <a href="#contact">Contacto</a> </li> 
             </ul>
-        
             <label for="cart-toggle" class="cart-label">
             <img class="carrito-img carrito-contenedor" id="carrito-icon" src="./img/carretilla (1).png" alt="Carro">
+            <span id="carrito-cantidad">
+            </span>
             </label>
-           
-            
-        
             <!-- Modal con las opciones del navbar -->
             <div id="navbarModal" class="modal">
                 <div class="modal-content">
@@ -56,25 +50,11 @@
  <!-- portada -->
     <main id="inicio">
          <!-- Portada -->
-         <div class="slider-box">
-            <ul class="slider-box-ul">
-                <li class="slider-box-ul-li">
-                    <img class="slider-box-ul-li-img" src="./img/imgstanley/carrusel1.png" alt="imagen1">
-                </li>
-
-                <li class="slider-box-ul-li">
-                    <img class="slider-box-ul-li-img" src="./img/imgstanley/carrrusel2.png" alt="imagen2">
-                </li>
-        
-                <li class="slider-box-ul-li">
-                    <img class="slider-box-ul-li-img" src="./img/imgstanley/carrusel3.png" alt="imagen3">
-                </li>
-                
-            </ul>
-        </div>
-        
-            
-        </div>
+         <div class="banner">
+            <div class="banner-content">
+              <h1>BIENVENIDOS A TERMOS STANLEY</h1>
+            </div>
+          </div>
          <!-- about us -->
         <section id="About-us">
             <div class="About-us" >
@@ -84,66 +64,73 @@
         </section>
     </main>
     <section id="description">
-        
+  
         <div class="categorias" id="categorias">
-            <img id="categoria-termos" src="./img/imgstanley/img categoria 1.png" alt="Termos">
-            <img id="categoria-vasos" src="./img/imgstanley/img categoria 2.png" alt="Vasos">
-            <img id="categoria-mates" src="./img/imgstanley/img categoria 3.png" alt="Mates">
-            <img id="categoria-todos" src="./img/imgstanley/todosLosProd.png" alt="Productos" srcset="">
-        </div>
-        
+            <button class="categoria-button" id="categoria-termos">Termos</button>
+            <button class="categoria-button" id="categoria-vasos">Vasos</button>
+            <button class="categoria-button" id="categoria-mates">Mates</button>
+            <button class="categoria-button" id="categoria-todos">Todos los Productos</button>
+          </div>
+
         <div id="card-container"></div>  
-        </section>
+    </section>
 
     </section>
      <!-- contacto -->
     <section id="contact">
-        <div class="contenedor__contact">
-
-            <div class="contact" >
-                <h2 class="animate__animated animate__backInLeft">
-                    Contactanos 📩
-                </h2>
-
-                <!-- formulario -->
-                <form class="formulario" id="contacto-form" novalidate>
-                    <div class="form-group">
-                      <label for="nombre">Apellido y Nombre:</label>
-                      <input type="text" id="nombre" name="nombre" required>
-                      <small></small>
-                    </div>
-                    
-                    <div class="form-group">
-                      <label for="correo">Correo:</label>
-                      <input type="email" id="correo" name="correo" required>
-                      <small></small>
-                    </div>
-                    <div class="form-group">
-                      <label for="mensaje">Mensaje:</label>
-                      <textarea id="mensaje" name="mensaje" rows="4" cols="50" required></textarea>
-                    </div>
-                    <div class="form-group">
-                      <input class="hover" type="submit" value="Enviar">
-                    </div>
-                    <!-- esto se va hacer desde mi js -->
-                    <h2 id="mensaje-envio">
-
-                    </h2>
-                  </form>
-
-            </div>
-            <div class="imgContact">
-                <img src="https://i.pinimg.com/564x/c3/b0/c2/c3b0c2bf64a983c3be9b3e84b9ab52d7.jpg" alt="" srcset="">
-            </div>
-
-        </div>       
+        <div class="contact-container">
+            <h2 class="animate__animated animate__backInLeft titulo-contact">
+              Contactanos 📩
+            </h2>
+          
+            <!-- formulario -->
+            <form class="formulario" id="contacto-form" novalidate>
+              <div class="form-group">
+                <label for="nombre">Apellido y Nombre</label>
+                <input type="text" id="nombre" name="nombre" required>
+                <small></small>
+              </div>
+          
+              <div class="form-group">
+                <label for="correo">Correo</label>
+                <input type="email" id="correo" name= "correo" required>
+                <small></small>
+              </div>
+          
+              <div class="form-group">
+                <label for="mensaje">Mensaje</label>
+                <textarea id="mensaje" name="mensaje" rows="4" cols="50" required></textarea>
+              </div>
+          
+              <div class="form-group boton-submit">
+                <input class="hover" type="submit" value="Enviar">
+              </div>
+              
+              <!-- Esto se manejará con JavaScript -->
+              <h2 id="mensaje-envio"></h2>
+            </form>
+          </div>
+          
     </section>
     <section>
         <div id="modal">
             <div id="modal-content">
-                <h2>Carrito de Compras</h2>
-                <ul id="carrito-list"></ul>
-                <button id="cerrar-modal">Cerrar</button>
+                <h2 class="modal-title-carrito">Carrito de Compras</h2>
+                <div class="acomodador">
+                    <ul id="carrito-list">
+                        <!-- contenido carrito -->
+                        <div id="botonesAumentarDecrementar"></div>
+                    </ul>
+                </div>
+                <div class="acomodador-botones-modal">
+                    <button id="cerrar-modal">Cerrar Carrito</button>
+                    <button id="vaciar-carrito-button" >Vaciar Carrito</button>
+                </div>
+                <div class="botones-modal-confirmacion">
+                    <h3 id="confirmacion-vaciar" style="display: none;">¿Estás seguro de vaciar el carrito?</h3>
+                    <button id="boton-si" style="display: none;">Sí</button>
+                    <button id="boton-no" style="display: none;">No</button>
+                </div>
             </div>
         </div>
         
